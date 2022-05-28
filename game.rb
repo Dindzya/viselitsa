@@ -1,7 +1,7 @@
 #класс с основной логикой игры
 class Game
   #поля класса
-  def inititalize(slovo)
+  def initialize(slovo)
     @letters = get_letters(slovo)
 
     @errors = 0
@@ -14,19 +14,19 @@ class Game
 
   def get_letters(slovo)
     #проверка слова для игры
-    if slovo == nil || slovo == ""
+    if slovo == nil || slovo == ''
       abort "Вы не ввели слово для игры"
     end
-      slovo.encode('UTF-8').split('')
+    return slovo.encode.split('')
   end
   #1. cпросить букву
   #2. проверить результат
   def ask_next_letter
-    puts "/nВведите следующую букву"
+    puts "\nВведите следующую букву"
 
-    letter == ''
+    letter = ''
     while letter == ''
-      letter = STDIN.gets.encode(UTF-8).chomp
+      letter = STDIN.gets.chomp
     end
      next_step(letter)
   end

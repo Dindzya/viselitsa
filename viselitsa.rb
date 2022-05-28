@@ -1,18 +1,13 @@
-if Gem.win_platform?
-  Encoding.default_external = Encoding.find(Encoding.locale_charmap)
-  Encoding.default_internal = __ENCODING__
+current_path = "./" + File.dirname(__FILE__)
+require current_path + "/game.rb"
+require current_path + "/result_printer.rb"
+require current_path + "/word_reader.rb"
 
-  [STDIN, STDOUT].each do |io|
-    io.set_encoding(Encoding.default_external, Encoding.default_internal)
-  end
-end
-
-require "./game.rb"
-require "./result_printer.rb"
+reader = WordReader.new
 
 printer = ResultPrinter.new
 
-slovo = ARGV[0]
+slovo = reader.read_from_file(current_path + '/data/words.txt')
 
 game  = Game.new(slovo)
 
